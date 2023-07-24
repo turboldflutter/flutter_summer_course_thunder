@@ -50,7 +50,15 @@ class Family {
     this.sister = sister;
   }
   String sayFamilyMember() {
-    return 'The Family has 4 members, my father’s name is ${this.father.name} My mother’s name is ${this.mother.name}  my brother’s name is ${this.brother.name} , my sister’s name is ${this.sister.name}';
+    return 'My family has 4 members, my father’s name is ${this.father.name}. My mother’s name is ${this.mother.name}.  my brother’s name is ${this.brother.name}. , my sister’s name is ${this.sister.name}.';
+  }
+
+  String sayFamilyAge() {
+    return '${this.father.name} is age: ${this.father.age}. ${this.mother.name} is age:${this.mother.age}.';
+  }
+
+  String sayFamilyGender() {
+    return '${this.brother.name} is ${this.brother.gender}';
   }
 }
 
@@ -66,7 +74,20 @@ class Human {
   String getName() {
     return '$name';
   }
+
+  int getAge() {
+    return age;
+  }
+
+  String getGender() {
+    return '$gender';
+  }
 }
+
+Human father = Human(name: 'Batsukh', age: 66, gender: 'man');
+Human mother = Human(name: 'Saranchimeg', age: 68, gender: 'women');
+Human brother = Human(name: 'Turmunkh', age: 32, gender: 'man');
+Human sister = Human(name: 'Enkhmunkh', age: 21, gender: 'Women');
 
 void main() {
   final Shape rectangle = Shape(length: 14, width: 20, name: 'Rectangle');
@@ -100,11 +121,9 @@ void main() {
   print(spinosaurus.shoutSize());
   print(spinosaurus.showColor());
 
-  Human father = Human(name: 'Batsukh.', age: 66, gender: 'man');
-  Human mother = Human(name: 'Saranchimeg.', age: 68, gender: 'women');
-  Human brother = Human(name: 'Turmunkh.', age: 32, gender: 'man');
-  Human sister = Human(name: 'Enkhmunkh.', age: 21, gender: 'Women');
   final Family family =
       Family(father: father, mother: mother, brother: brother, sister: sister);
   print(family.sayFamilyMember());
+  print(family.sayFamilyAge());
+  print(family.sayFamilyGender());
 }
