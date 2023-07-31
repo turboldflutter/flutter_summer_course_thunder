@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'gradient_text.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         body: Center(
-          child: Text('Hello World'),
+          child: GradientText('Game', 31.6),
         ),
       ),
     );
