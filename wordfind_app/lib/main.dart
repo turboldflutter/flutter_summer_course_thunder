@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'welcome_page.dart';
+
 import 'gradient_text.dart';
 
 void main() {
@@ -16,11 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Ribeye',
       ),
-      home: Scaffold(
-        body: Center(
-          child: GradientText('Game', 31.6),
-        ),
-      ),
+      home: const WelcomePage(),
     );
   }
 }
