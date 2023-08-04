@@ -62,8 +62,12 @@ class StartButton extends StatelessWidget {
               end: Alignment.centerRight),
           borderRadius: BorderRadius.circular(25)),
       child: ElevatedButton(
-        onPressed: (){},
-        child: Text('START', style: TextStyle(fontFamily: 'Nunito', fontSize: 24, fontWeight: FontWeight.w700),),
+        onPressed: () {},
+        child: Text(
+          'START',
+          style: TextStyle(
+              fontFamily: 'Nunito', fontSize: 24, fontWeight: FontWeight.w700),
+        ),
         style: ElevatedButton.styleFrom(
             backgroundColor: Colors.transparent,
             elevation: 0,
