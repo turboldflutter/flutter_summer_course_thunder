@@ -6,7 +6,7 @@ class StartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: Color(0xFFFBF5F2),
       appBar: AppBar(
         leading: IconButton(
@@ -19,13 +19,15 @@ class StartPage extends StatelessWidget {
         centerTitle: true,
         title: SizedBox(
           height: 50.0,
-          child: Image(image: 'assets/game_logo.png'),
+          child: Image.asset('assets/game_logo.png'),
         ),
       ),
       body: Container(
         decoration: BoxDecoration(
-          image: AssetImage('assets/game_logo.png'),
-          fit: BoxFit,
+          image: DecorationImage(
+            image: AssetImage('assets/Back2.png'),
+            fit: BoxFit.cover,
+          ),
         ),
         child: Center(
           child: Column(
@@ -39,10 +41,17 @@ class StartPage extends StatelessWidget {
           ),
         ),
       ),
-      floatingActionButton: StartButton('Start'),
+      floatingActionButton: StartButton(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
 
-class StartButton {
+class StartButton extends StatelessWidget {
+  const StartButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
 }
