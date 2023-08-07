@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wordfind_app/gradient_text.dart';
+import 'package:wordfind_app/input_field.dart';
 
 class StartPage extends StatelessWidget {
   const StartPage({super.key});
@@ -36,6 +37,7 @@ class StartPage extends StatelessWidget {
               Image.asset('assets/iCodeGuyHead.png'),
               Padding(padding: EdgeInsets.only(top: 20)),
               GradientText('Player Name', 20.0),
+              InputField(),
               Padding(padding: EdgeInsets.only(top: 20))
             ],
           ),
@@ -56,7 +58,7 @@ class StartButton extends StatelessWidget {
       width: 310,
       height: 60,
       decoration: BoxDecoration(
-          gradient: LinearGradient(
+          gradient: const LinearGradient(
               colors: [Color(0xFFE86B02), Color(0xFFFA9541)],
               begin: Alignment.centerLeft,
               end: Alignment.centerRight),
