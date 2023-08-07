@@ -18,7 +18,7 @@ class InputField extends StatelessWidget {
           fontFamily: 'Nunito',
           fontWeight: FontWeight.w600,
         ),
-        decoration: const InputDecoration(
+        decoration: InputDecoration(
           contentPadding: EdgeInsets.symmetric(horizontal: 25, vertical: 12),
           filled: true,
           fillColor: Colors.white,
