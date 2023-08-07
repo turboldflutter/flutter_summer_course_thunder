@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'welcome_page.dart';
-
+import 'task_page.dart';
 import 'gradient_text.dart';
 
 void main() {
