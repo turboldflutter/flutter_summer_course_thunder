@@ -19,4 +19,7 @@ class TaskModel {
   ) {
     this.puzzles = puzzles;
   }
+  void setIsDone(){
+    isDone = true;
+  }
 }
