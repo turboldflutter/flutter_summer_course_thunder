@@ -19,7 +19,25 @@ class TaskModel {
   ) {
     this.puzzles = puzzles;
   }
-  void setIsDone(){
+
+  void setIsDone() {
     isDone = true;
+  }
+
+  bool fieldCompleteCorrect() {
+    bool complete =
+        puzzles.where((puzzle) => puzzle.currentValue == null).isEmpty;
+    if (!complete) {
+      isFull = false;
+      return complete;
+    }
+    isFull = true;
+    String answeredString =
+        puzzles.map((puzzle) => puzzle.currentValue).join("");
+    return answeredString == answer;
+  }
+
+  TaskModel clone() {
+    return TaskModel(pathImage: pathImage, question: question, answer: answer);
   }
 }
