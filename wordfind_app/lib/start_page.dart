@@ -2,9 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:wordfind_app/gradient_text.dart';
 import 'package:wordfind_app/input_field.dart';
 
-class StartPage extends StatelessWidget {
+import 'models/user_model.dart';
+
+User newUser = User("Guest", 0);
+
+class StartPage extends StatefulWidget {
   const StartPage({super.key});
 
+  @override
+  State<StartPage> createState() => _StartPageState();
+}
+
+class _StartPageState extends State<StartPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +46,9 @@ class StartPage extends StatelessWidget {
               Image.asset('assets/iCodeGuyHead.png'),
               Padding(padding: EdgeInsets.only(top: 20)),
               GradientText('Player Name', 20.0),
-              InputField(),
+              InputField(
+                onSubmitted: (String) {},
+              ),
               Padding(padding: EdgeInsets.only(top: 20))
             ],
           ),

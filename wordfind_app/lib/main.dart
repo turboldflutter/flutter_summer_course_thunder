@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wordfind_app/start_page.dart';
 import 'welcome_page.dart';
 import 'task_page.dart';
 import 'gradient_text.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Ribeye',
       ),
-      home: const WelcomePage(),
+      home: const StartPage(),
     );
   }
 }

@@ -1,8 +1,26 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class InputField extends StatelessWidget {
-  const InputField({super.key});
+class InputField extends StatefulWidget {
+  final void Function(String) onSubmitted;
+  const InputField({super.key, required this.onSubmitted});
+
+  @override
+  State<InputField> createState() => _InputFieldState();
+}
+
+class _InputFieldState extends State<InputField> {
+  late TextEditingController _textEditingController;
+  @override
+  void initState() {
+    _textEditingController = TextEditingController();
+    super.initState();
+  }
+  @override
+  void dispose() {
+    _textEditingController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +28,8 @@ class InputField extends StatelessWidget {
       width: 310,
       height: 50,
       child: TextField(
-        onSubmitted: (String value) {},
+        onSubmitted: (String value) {widget.onSubmitted(value);},
+        controller: _textEditingController,
         maxLines: 1,
         style: const TextStyle(
           color: Color(0xFFE86B02),
