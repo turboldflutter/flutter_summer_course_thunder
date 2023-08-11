@@ -16,6 +16,7 @@ class _InputFieldState extends State<InputField> {
     _textEditingController = TextEditingController();
     super.initState();
   }
+
   @override
   void dispose() {
     _textEditingController.dispose();
@@ -28,7 +29,9 @@ class _InputFieldState extends State<InputField> {
       width: 310,
       height: 50,
       child: TextField(
-        onSubmitted: (String value) {widget.onSubmitted(value);},
+        onSubmitted: (String value) {
+          widget.onSubmitted(value);
+        },
         controller: _textEditingController,
         maxLines: 1,
         style: const TextStyle(

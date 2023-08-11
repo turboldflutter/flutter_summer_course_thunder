@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Ribeye',
       ),
-      home: const StartPage(),
+      home: const WelcomePage(),
     );
   }
 }

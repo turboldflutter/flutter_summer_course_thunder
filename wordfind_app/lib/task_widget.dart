@@ -1,13 +1,15 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:icode_test/models/char_model.dart';
-import 'package:icode_test/models/task_model.dart';
 import 'package:word_search_safety/word_search_safety.dart';
+
+import 'models/char_model.dart';
+import 'models/task_model.dart';
 
 class TaskWidget extends StatefulWidget {
   final Size size;
   final List<TaskModel> listQuestions;
+
   const TaskWidget(this.size, this.listQuestions, {super.key});
 
   @override
@@ -164,7 +166,7 @@ class TaskWidgetState extends State<TaskWidget> {
                   topLeft: Radius.circular(30), topRight: Radius.circular(30)),
             ),
             padding:
-            const EdgeInsets.only(left: 30, right: 30, top: 30, bottom: 40),
+                const EdgeInsets.only(left: 30, right: 30, top: 30, bottom: 40),
             alignment: Alignment.center,
             child: Column(
               children: [
@@ -198,7 +200,7 @@ class TaskWidgetState extends State<TaskWidget> {
                             height: constraints.biggest.height,
                             child: TextButton(
                               child: Text(
-                                currentQues.arrayBtns[index].toUpperCase(),
+                                currentQues.arrayButtons[index].toUpperCase(),
                                 style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 25,
@@ -266,8 +268,9 @@ class TaskWidgetState extends State<TaskWidget> {
     final WSNewPuzzle newPuzzle = wordSearch.newPuzzle(wl, ws);
 
     if (newPuzzle.errors!.isEmpty) {
-      currentQues.arrayBtns = newPuzzle.puzzle!.expand((list) => list).toList();
-      currentQues.arrayBtns.shuffle();
+      currentQues.arrayButtons =
+          newPuzzle.puzzle!.expand((list) => list).toList();
+      currentQues.arrayButtons.shuffle();
 
       bool isDone = currentQues.isDone;
 
@@ -300,7 +303,7 @@ class TaskWidgetState extends State<TaskWidget> {
         if (indexHint == countTemp - 1) {
           puzzle.hintShow = true;
           puzzle.currentValue = puzzle.correctValue;
-          puzzle.currentIndex = currentQues.arrayBtns
+          puzzle.currentIndex = currentQues.arrayButtons
               .indexWhere((btn) => btn == puzzle.correctValue);
         }
 
@@ -326,12 +329,12 @@ class TaskWidgetState extends State<TaskWidget> {
     TaskModel currentQues = listQuestions[indexQues];
 
     int currentIndexEmpty =
-    currentQues.puzzles.indexWhere((puzzle) => puzzle.currentValue == null);
+        currentQues.puzzles.indexWhere((puzzle) => puzzle.currentValue == null);
 
     if (currentIndexEmpty >= 0) {
       currentQues.puzzles[currentIndexEmpty].currentIndex = index;
       currentQues.puzzles[currentIndexEmpty].currentValue =
-      currentQues.arrayBtns[index];
+          currentQues.arrayButtons[index];
 
       if (currentQues.fieldCompleteCorrect()) {
         currentQues.isDone = true;
@@ -347,4 +350,3 @@ class TaskWidgetState extends State<TaskWidget> {
     }
   }
 }
-

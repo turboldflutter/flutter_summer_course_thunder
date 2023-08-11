@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wordfind_app/gradient_text.dart';
 import 'package:wordfind_app/input_field.dart';
+import 'package:wordfind_app/task_page.dart';
 
 import 'models/user_model.dart';
 
@@ -21,7 +22,8 @@ class _StartPageState extends State<StartPage> {
       appBar: AppBar(
         leading: IconButton(
             onPressed: () {
-              Navigator.of(context).pop();
+              Navigator.pop(context);
+              newUser = User("Guest", 0);
             },
             icon: Image.asset('assets/arrow_back.png')),
         backgroundColor: Colors.transparent,
@@ -47,46 +49,61 @@ class _StartPageState extends State<StartPage> {
               Padding(padding: EdgeInsets.only(top: 20)),
               GradientText('Player Name', 20.0),
               InputField(
-                onSubmitted: (String) {},
+                onSubmitted: _createUser,
               ),
               Padding(padding: EdgeInsets.only(top: 20))
             ],
           ),
         ),
       ),
-      floatingActionButton: StartButton(),
+      floatingActionButton: StartButton(newUser),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
+  }
+
+  void _createUser(String userName) {
+    setState(() {
+      newUser.userName = userName;
+    });
   }
 }
 
 class StartButton extends StatelessWidget {
-  const StartButton({super.key});
+  const StartButton(User newUser, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 310,
-      height: 60,
-      decoration: BoxDecoration(
-          gradient: const LinearGradient(
-              colors: [Color(0xFFE86B02), Color(0xFFFA9541)],
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight),
-          borderRadius: BorderRadius.circular(25)),
-      child: ElevatedButton(
-        onPressed: () {},
-        child: Text(
-          'START',
-          style: TextStyle(
-              fontFamily: 'Nunito', fontSize: 24, fontWeight: FontWeight.w700),
+    if (newUser.userName == 'Guest') {
+      return Container();
+    } else {
+      return Container(
+        width: 310,
+        height: 60,
+        decoration: BoxDecoration(
+            gradient: const LinearGradient(
+                colors: [Color(0xFFE86B02), Color(0xFFFA9541)],
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight),
+            borderRadius: BorderRadius.circular(25)),
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => TaskPage(newUser)));
+          },
+          child: Text(
+            'START',
+            style: TextStyle(
+                fontFamily: 'Nunito',
+                fontSize: 24,
+                fontWeight: FontWeight.w700),
+          ),
+          style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(25))),
         ),
-        style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(25))),
-      ),
-    );
+      );
+    }
   }
 }

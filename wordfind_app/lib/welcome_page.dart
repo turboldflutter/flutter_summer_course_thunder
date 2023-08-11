@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wordfind_app/start_page.dart';
 
 import 'gradient_letter.dart';
 import 'gradient_text.dart';
@@ -33,8 +34,12 @@ class WelcomePage extends StatelessWidget {
                     ],
                   ),
                   GradientText('Game', 31.6),
-                  SizedBox(height: 50,),
-                  Image(image: AssetImage('assets/iCodeGuy.png'),)
+                  SizedBox(
+                    height: 50,
+                  ),
+                  Image(
+                    image: AssetImage('assets/iCodeGuy.png'),
+                  )
                 ],
               )),
             ),
@@ -53,7 +58,10 @@ class WelcomePage extends StatelessWidget {
           borderRadius: BorderRadius.circular(25),
         ),
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const StartPage()));
+          },
           style: ElevatedButton.styleFrom(
               backgroundColor: Colors.transparent,
               elevation: 0,

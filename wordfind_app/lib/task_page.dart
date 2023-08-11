@@ -1,7 +1,26 @@
 import 'package:flutter/material.dart';
 
-class TaskPage extends StatelessWidget {
-  TaskPage({super.key});
+import 'data/questions.dart';
+import 'models/task_model.dart';
+import 'models/user_model.dart';
+
+class TaskPage extends StatefulWidget {
+  final User user;
+  TaskPage(this.user, {super.key});
+
+  @override
+  State<TaskPage> createState() => _TaskPageState();
+}
+
+class _TaskPageState extends State<TaskPage> {
+  late List<TaskModel> listQuestions;
+  late User user;
+  @override
+  void initState() {
+    listQuestions = questions;
+    user = widget.user;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -9,12 +28,15 @@ class TaskPage extends StatelessWidget {
       backgroundColor: Color(0xFFFBF5F2),
       appBar: AppBar(
         leading: IconButton(
-            onPressed: () {}, icon: Image.asset('assets/arrow_back.png')),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Image.asset('assets/arrow_back.png')),
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
         title: Text(
-          'Turbold',
+          widget.user.userName,
           style: TextStyle(fontSize: 24, color: Color(0xFFE86B02)),
         ),
       ),
