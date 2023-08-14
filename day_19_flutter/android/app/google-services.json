@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1032658767539",
+    "project_id": "lesson-19-turbold-flutter",
+    "storage_bucket": "lesson-19-turbold-flutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1032658767539:android:6183e68e482bed524c6ac6",
+        "android_client_info": {
+          "package_name": "com.example.day_17_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1032658767539-eb45c7n02kmbqfju10cum2hc2ieb0s9k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC62hDIugEql13OvXkQfEnTisziZf6ujao"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1032658767539-eb45c7n02kmbqfju10cum2hc2ieb0s9k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
