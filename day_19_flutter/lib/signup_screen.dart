@@ -1,5 +1,5 @@
 import 'package:day_17_flutter/resources/auth_methods.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:day_17_flutter/components/text_field_input.dart';
 
@@ -37,6 +37,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               hintText: 'Хэрэглэгчийн нэр',
               isPassword: false,
               textEditingController: _userNameController,
+              textInputType: TextInputType.text,
             ),
             SizedBox(
               height: 24,
@@ -45,6 +46,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               hintText: 'И-мэйл',
               isPassword: false,
               textEditingController: _emailController,
+              textInputType: TextInputType.emailAddress,
             ),
             SizedBox(
               height: 24,
@@ -53,6 +55,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               hintText: 'Нууц үг',
               isPassword: true,
               textEditingController: _passwordController,
+              textInputType: TextInputType.text,
             ),
             SizedBox(
               height: 24,
@@ -61,6 +64,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               hintText: 'Нууц үг давтах',
               isPassword: true,
               textEditingController: _passwordController,
+              textInputType: TextInputType.text,
             ),
             SizedBox(
               height: 24,
