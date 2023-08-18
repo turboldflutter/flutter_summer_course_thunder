@@ -23,25 +23,26 @@ class WelcomePage extends StatelessWidget {
               padding: EdgeInsets.only(top: 200),
               child: Expanded(
                   child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      GradientLetter('W'),
-                      GradientLetter('O'),
-                      GradientLetter('R'),
-                      GradientLetter('D'),
+                     children: [
+                        Row(
+                           mainAxisAlignment: MainAxisAlignment.center,
+                           children: [
+                            GradientLetter('W'),
+                            GradientLetter('O'),
+                            GradientLetter('R'),
+                            GradientLetter('D'),
                     ],
                   ),
-                  GradientText('Game', 31.6),
-                  SizedBox(
-                    height: 50,
+                         GradientText('Game', 31.6),
+                          SizedBox(
+                    height: 100,
                   ),
                   Image(
                     image: AssetImage('assets/iCodeGuy.png'),
                   )
                 ],
-              )),
+                    )
+                ),
             ),
             Expanded(child: GradientText('READY', 25.0)),
           ],

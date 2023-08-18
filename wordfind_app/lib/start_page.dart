@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:wordfind_app/gradient_text.dart';
 import 'package:wordfind_app/input_field.dart';
 import 'package:wordfind_app/task_page.dart';
-
 import 'models/user_model.dart';
 
 User newUser = User("Guest", 0);
