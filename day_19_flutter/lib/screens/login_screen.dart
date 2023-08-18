@@ -2,6 +2,8 @@ import 'package:day_17_flutter/components/text_field_input.dart';
 import 'package:day_17_flutter/resources/auth_methods.dart';
 import 'package:flutter/material.dart';
 
+import 'home_screen.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -10,11 +12,27 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  bool _isLoading = false;
+
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
-
-
+  void loginUser() async {
+    setState(() {
+      _isLoading = true;
+    });
+    String result = await AuthMethods().loginUser(
+        email: _emailController.text, password: _passwordController.text);
+    if (result == 'success') {
+      setState(() {
+        _isLoading = false;
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const HomeScreen()));
+      });
+      print('Logged in');
+    } else {
+      print('Not logged in');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       textInputType: TextInputType.text),
                   SizedBox(height: 64),
                   InkWell(
-                    onTap: () {loginUser;},
+                    onTap: loginUser,
                     child: Container(
                       width: double.infinity,
                       alignment: Alignment.center,
@@ -54,9 +72,11 @@ class _LoginScreenState extends State<LoginScreen> {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(4))),
                           color: Colors.blue),
-                      child: Center(
-                        child: Text('‘Нэвтрэх’'),
-                      ),
+                      child: _isLoading
+                          ? Center(
+                              child: CircularProgressIndicator(
+                                  color: Colors.white))
+                          : Text('Нэвтрэх'),
                     ),
                   ),
                   SizedBox(
