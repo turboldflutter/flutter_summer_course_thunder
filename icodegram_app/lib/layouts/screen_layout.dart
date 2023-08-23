@@ -1,8 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../screens/add_post_screen.dart';
-import '../screens/home_screen.dart';
-import '../screens/profile_screen.dart';
+import '../pages/add_post_screen.dart';
+import '../pages/home_screen.dart';
+import '../pages/profile_screen.dart';
 
 class ScreenLayout extends StatefulWidget {
   const ScreenLayout({super.key});
@@ -44,11 +45,11 @@ class _ScreenLayoutState extends State<ScreenLayout> {
     return Scaffold(
       body: SafeArea(
           child: PageView(
-        physics: NeverScrollableScrollPhysics(),
-        controller: pageController,
-        onPageChanged: onPageChanged,
-        children: [HomeScreen(), AddPostScreen(), ProfileScreen()],
-      )),
+            physics: NeverScrollableScrollPhysics(),
+            controller: pageController,
+            onPageChanged: onPageChanged,
+            children: [HomeScreen(), AddPostScreen(), ProfileScreen()],
+          )),
       bottomNavigationBar: CupertinoTabBar(
         items: [
           BottomNavigationBarItem(
