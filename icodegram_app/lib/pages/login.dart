@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:icodegram_app/components/styles/gradiant_text.dart';
+import 'package:icodegram_app/pages/sign_up.dart';
 import '../components/text_field_input.dart';
 import '../resources/auth_methods.dart';
 import 'home_screen.dart';
-
-
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -49,16 +49,22 @@ class _LoginScreenState extends State<LoginScreen> {
                     flex: 2,
                     child: Container(),
                   ),
-                  Text('iCodegram'),
+                  Text(
+                    'iCodegram',
+                    style: TextStyle(
+                        fontFamily: 'Lobster',
+                        fontSize: 36,
+                        fontWeight: FontWeight.w400),
+                  ),
                   SizedBox(height: 64),
                   TextFieldInput(
-                      hintText: 'Enter your email',
+                      hintText: 'Нэвтрэх нэр',
                       isPassword: false,
                       textEditingController: _emailController,
                       textInputType: TextInputType.text),
                   SizedBox(height: 24),
                   TextFieldInput(
-                      hintText: 'Enter your password',
+                      hintText: 'Нууц үг',
                       isPassword: true,
                       textEditingController: _passwordController,
                       textInputType: TextInputType.text),
@@ -69,23 +75,70 @@ class _LoginScreenState extends State<LoginScreen> {
                       width: double.infinity,
                       alignment: Alignment.center,
                       padding: EdgeInsets.symmetric(vertical: 12),
-                      decoration: ShapeDecoration(
-                          shape: RoundedRectangleBorder(
-                              borderRadius:
-                              BorderRadius.all(Radius.circular(4))),
-                          color: Colors.blue),
+                      decoration: BoxDecoration(
+                        gradient: const LinearGradient(
+                            colors: [Color(0xFFE86B02), Color(0xFFFA9541)],
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
                       child: _isLoading
                           ? Center(
-                          child: CircularProgressIndicator(
-                              color: Colors.white))
-                          : Text('Нэвтрэх'),
+                              child: CircularProgressIndicator(
+                                  color: Colors.white))
+                          : Text("Нэвтрэх",
+                              style:
+                                  TextStyle(fontSize: 14, color: Colors.white)),
                     ),
                   ),
+                  SizedBox(height: 24),
+                  Text(
+                    "Эсвэл",
+                    style: const TextStyle(
+                        fontFamily: "Rubik",
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400,
+                        color: Color.fromRGBO(255, 255, 255, 0.6),
+                        height: 18 / 15),
+                  ),
+                  SizedBox(height: 24),
                   SizedBox(
                     height: 12,
                   ),
                   Flexible(
-                    child: Container(),
+                    child: Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Шинэ хэрэглэгч үү? ",
+                            style: const TextStyle(
+                              fontFamily: "Rubik",
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
+                              color: Color.fromRGBO(255, 255, 255, 0.6),
+                              height: 18 / 15,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const SignUpScreen()));
+                            },
+                            child: Container(
+                              child: GradientText("Бүртгүүлэх", 15),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                     flex: 2,
                   ),
                 ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../components/styles/gradiant_text.dart';
 import '../components/text_field_input.dart';
 import '../resources/auth_methods.dart';
 import 'login.dart';
@@ -14,6 +15,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +30,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
             Text(
               'iCodegram',
-              style: TextStyle(fontSize: 34),
+              style: TextStyle(
+                  fontFamily: 'Lobster',
+                  fontSize: 36,
+                  fontWeight: FontWeight.w400),
             ),
             SizedBox(
               height: 64,
@@ -40,7 +45,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               textInputType: TextInputType.text,
             ),
             SizedBox(
-              height: 24,
+              height: 14,
             ),
             TextFieldInput(
               hintText: 'И-мэйл',
@@ -49,7 +54,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               textInputType: TextInputType.emailAddress,
             ),
             SizedBox(
-              height: 24,
+              height: 14,
             ),
             TextFieldInput(
               hintText: 'Нууц үг',
@@ -58,7 +63,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               textInputType: TextInputType.text,
             ),
             SizedBox(
-              height: 24,
+              height: 14,
             ),
             TextFieldInput(
               hintText: 'Нууц үг давтах',
@@ -67,40 +72,89 @@ class _SignUpScreenState extends State<SignUpScreen> {
               textInputType: TextInputType.text,
             ),
             SizedBox(
-              height: 24,
+              height: 48,
             ),
             InkWell(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const LoginScreen()));
-                AuthMethods().signUpUser(
-                    email: _emailController.text,
-                    password: _passwordController.text,
-                    username: _userNameController.text);
-              },
+              onTap: onSignUp,
               child: Container(
                 width: double.infinity,
                 alignment: Alignment.center,
                 padding: EdgeInsets.symmetric(vertical: 12),
-                decoration: ShapeDecoration(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(4))),
-                    color: Colors.blue),
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                      colors: [Color(0xFFE86B02), Color(0xFFFA9541)],
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight),
+                  borderRadius: BorderRadius.circular(5),
+                ),
                 child: Text('Бүртгүүлэх'),
               ),
             ),
+            SizedBox(height: 24),
+            Text(
+              "Эсвэл",
+              style: const TextStyle(
+                  fontFamily: "Rubik",
+                  fontSize: 15,
+                  fontWeight: FontWeight.w400,
+                  color: Color.fromRGBO(255, 255, 255, 0.6),
+                  height: 18 / 15),
+            ),
+            SizedBox(height: 24),
             SizedBox(
               height: 12,
             ),
             Flexible(
-              child: Container(),
+              child: Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Бүртгэлтэй юу? ",
+                      style: const TextStyle(
+                        fontFamily: "Rubik",
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400,
+                        color: Color.fromRGBO(255, 255, 255, 0.6),
+                        height: 18 / 15,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const LoginScreen()));
+                      },
+                      child: Container(
+                        child: GradientText("Нэвтрэх", 15),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               flex: 2,
             ),
           ],
         ),
       )),
     );
+  }
+
+  void onSignUp() async {
+    String result = await AuthMethods().signUpUser(
+        email: _emailController.text,
+        password: _passwordController.text,
+        username: _userNameController.text);
+    if (result == 'success') {
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => const LoginScreen()));
+    } else {
+      print('no success');
+    }
   }
 }
