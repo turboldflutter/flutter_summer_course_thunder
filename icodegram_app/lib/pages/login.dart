@@ -17,6 +17,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  void navigateToSignUp() {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => const SignUpScreen()));
+  }
+
   void loginUser() async {
     setState(() {
       _isLoading = true;
@@ -124,18 +130,31 @@ class _LoginScreenState extends State<LoginScreen> {
                           SizedBox(
                             width: 10,
                           ),
-                          InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const SignUpScreen()));
-                            },
+                          GestureDetector(
+                            onTap: navigateToSignUp,
                             child: Container(
+                              padding: const EdgeInsets.symmetric(vertical: 8),
                               child: GradientText("Бүртгүүлэх", 15),
+                              // child: const Text(
+                              //   "Бүртгүүлэх",
+                              //   style: TextStyle(
+                              //     fontWeight: FontWeight.bold,
+                              //   ),
+                              // ),
                             ),
-                          ),
+                          )
+                          // InkWell(
+                          //   onTap: () {
+                          //     Navigator.push(
+                          //         context,
+                          //         MaterialPageRoute(
+                          //             builder: (context) =>
+                          //                 const SignUpScreen()));
+                          //   },
+                          //   child: Container(
+                          //     child: GradientText("Бүртгүүлэх", 15),
+                          //   ),
+                          // ),
                         ],
                       ),
                     ),

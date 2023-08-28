@@ -1,5 +1,6 @@
 import 'package:day_17_flutter/components/text_field_input.dart';
 import 'package:day_17_flutter/resources/auth_methods.dart';
+import 'package:day_17_flutter/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'home_screen.dart';
 
@@ -15,6 +16,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  void navigateToSignUp() {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => const SignUpScreen()));
+  }
+
   void loginUser() async {
     setState(() {
       _isLoading = true;
@@ -83,7 +90,39 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 12,
                   ),
                   Flexible(
-                    child: Container(),
+                    child: Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Шинэ хэрэглэгч үү? ",
+                            style: const TextStyle(
+                              fontFamily: "Rubik",
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
+                              color: Color.fromRGBO(255, 255, 255, 0.6),
+                              height: 18 / 15,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          GestureDetector(
+                            onTap: navigateToSignUp,
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(vertical: 8),
+                              child: const Text(
+                                "Бүртгүүлэх",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
                     flex: 2,
                   ),
                 ],

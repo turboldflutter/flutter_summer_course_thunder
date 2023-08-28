@@ -21,6 +21,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _passwordController = TextEditingController();
   Uint8List? _image;
 
+  void navigateToLogin() {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => const LoginScreen()));
+  }
+
   void selectImage() async {
     Uint8List image = await pickimage(ImageSource.gallery);
     setState(() {
@@ -135,7 +140,39 @@ class _SignUpScreenState extends State<SignUpScreen> {
               height: 12,
             ),
             Flexible(
-              child: Container(),
+              child: Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Бүртгэлтэй хэрэглэгч үү? ",
+                      style: const TextStyle(
+                        fontFamily: "Rubik",
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400,
+                        color: Color.fromRGBO(255, 255, 255, 0.6),
+                        height: 18 / 15,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    GestureDetector(
+                      onTap: navigateToLogin,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        child: const Text(
+                          "Нэвтрэх",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
               flex: 2,
             ),
           ],
