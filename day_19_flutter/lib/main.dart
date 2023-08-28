@@ -12,6 +12,27 @@ void main() {
       scaffoldBackgroundColor: Color.fromRGBO(0, 0, 0, 1),
       textTheme: Typography().white.apply(fontFamily: 'Rubik'),
     ),
-    home: SignUpScreen(),
+    home: StreamBuilder(
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.active) {
+          if (snapshot.hasData) {
+            // Navigator.push(
+            //     context, MaterialPageRoute(builder: (context) =>
+              return  HomeScreen();
+          }
+          if (snapshot.hasError) {
+            // if this is true
+            return Center(child: Text('${snapshot.error}'));
+          }
+        } else if (snapshot.connectionState == ConnectionState.waiting) {
+          return Center(
+              child: CircularProgressIndicator(
+            color: Colors.white,
+          ));
+        }
+        return LoginScreen();
+      },
+      // stream: FirebaseAuth.instance.authStateChanges(),
+    ),
   ));
 }
