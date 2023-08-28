@@ -123,7 +123,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     email: _emailController.text,
                     password: _passwordController.text,
                     username: _userNameController.text,
-                    file: _image);
+                    file: _image, bio: '');
               },
               child: Container(
                 width: double.infinity,
