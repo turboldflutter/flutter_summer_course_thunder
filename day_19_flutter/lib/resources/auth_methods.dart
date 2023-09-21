@@ -1,5 +1,4 @@
 import 'dart:typed_data';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:day_17_flutter/resources/storage_methods.dart';
 import 'package:firebase_auth/firebase_auth.dart';

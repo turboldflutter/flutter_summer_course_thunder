@@ -1,6 +1,5 @@
 import 'package:day_17_flutter/resources/auth_methods.dart';
 import 'package:flutter/cupertino.dart';
-
 import '../models/user.dart';
 
 class UserProvider with ChangeNotifier {
